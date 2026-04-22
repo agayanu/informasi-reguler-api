@@ -226,7 +226,7 @@ class InfoController extends Controller
                         ->groupBy('c.ID_No','c.Grade','c.Major','d.Period');
                 })
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
-                ->get();
+                ->count();
             $lunasnow = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
                 ->select('a.ID_No')
