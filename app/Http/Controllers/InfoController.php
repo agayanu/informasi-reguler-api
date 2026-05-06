@@ -132,85 +132,98 @@ class InfoController extends Controller
                 ->count();
             $kas = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Trans_Type','C'],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tf = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Trans_Type','B'],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $kasnow = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Trans_Type','C'],['a.Trans_Date',$today],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tfnow = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Trans_Type','B'],['a.Trans_Date',$today],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $kas20 = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2020view],['a.Trans_Type','C'],['a.Trans_Date','<=',$y2020],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tf20 = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2020view],['a.Trans_Type','B'],['a.Trans_Date','<=',$y2020],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $kas20now = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2020view],['a.Trans_Type','C'],['a.Trans_Date','=',$y2020],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tf20now = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2020view],['a.Trans_Type','B'],['a.Trans_Date','=',$y2020],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $kas19 = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2019view],['a.Trans_Type','C'],['a.Trans_Date','<=',$y2019],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tf19 = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2019view],['a.Trans_Type','B'],['a.Trans_Date','<=',$y2019],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $kas19now = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2019view],['a.Trans_Type','C'],['a.Trans_Date','=',$y2019],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $tf19now = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$y2019view],['a.Trans_Type','B'],['a.Trans_Date','=',$y2019],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $lunas = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Balance_Amount','0.00'],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $cicil = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([
                     ['b.Period',$thisYear],
                     ['a.Balance_Amount','!=','0.00'],
@@ -226,16 +239,18 @@ class InfoController extends Controller
                         ->groupBy('c.ID_No','c.Grade','c.Major','d.Period');
                 })
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $lunasnow = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([['b.Period',$thisYear],['a.Balance_Amount','0.00'],['a.Trans_Date',$today],])
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $cicilnow = DB::table('Costs as a')
                 ->join('Costs_Control as b', 'a.Reg_No','=','b.Reg_No')
-                ->select('a.ID_No')
+                ->select('a.ID_No','a.Grade','a.Major','b.Period')
                 ->where([
                     ['b.Period',$thisYear],
                     ['a.Balance_Amount','!=','0.00'],
@@ -253,6 +268,7 @@ class InfoController extends Controller
                         ->groupBy('c.ID_No','c.Grade','c.Major','d.Period');
                 })
                 ->groupBy('a.ID_No','a.Grade','a.Major','b.Period')
+                ->get()
                 ->count();
             $diterima = DB::table('Registration')
                 ->select('Reg_No')
