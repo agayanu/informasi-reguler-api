@@ -328,49 +328,49 @@ class InfoController extends Controller
                 ->whereDate('b.Int_Date', $d3)
                 ->whereNotNull('b.Int_StatusID')
                 ->count();
-            $daful10 = DB::table('Costs_Monthly_ReReg as a')
+            $qdaful10 = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate','>',$dafuldate], ['b.Levels','10']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-            $daful11 = DB::table('Costs_Monthly_ReReg as a')
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful10 = DB::query()->fromSub($qdaful10, 'subquery')->count();
+            $qdaful11 = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate','>',$dafuldate], ['b.Levels','11']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-            $daful10now = DB::table('Costs_Monthly_ReReg as a')
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful11 = DB::query()->fromSub($qdaful11, 'subquery')->count();
+            $qdaful10now = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate',$today], ['b.Levels','10']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-            $daful11now = DB::table('Costs_Monthly_ReReg as a')
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful10now = DB::query()->fromSub($qdaful10now, 'subquery')->count();
+            $qdaful11now = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate',$today], ['b.Levels','11']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-            $daful10lunas = DB::table('Costs_Monthly_ReReg as a')
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful11now = DB::query()->fromSub($qdaful11now, 'subquery')->count();
+            $qdaful10lunas = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate','>',$dafuldate], ['b.Levels','10'], ['a.Amount_Balance','0.00']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-            $daful11lunas = DB::table('Costs_Monthly_ReReg as a')
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful10lunas = DB::query()->fromSub($qdaful10lunas, 'subquery')->count();
+            $qdaful11lunas = DB::table('Costs_Monthly_ReReg as a')
                 ->join('Costs_Monthly_Bill as b', 'a.ID_No','=','b.ID_No')
                 ->select('a.ID_No', 'a.F_Name', 'b.Class')
                 ->where([['b.Period_Year',$thisYear], ['b.TransType','500'], ['a.TransDate','>',$dafuldate], ['b.Levels','11'], ['a.Amount_Balance','0.00']])
                 ->whereRaw('a.Amount_Bill=b.Amount_Bill')
-                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class')
-                ->count();
-    
+                ->groupBy('a.ID_No', 'a.F_Name', 'b.Class');
+            $daful11lunas = DB::query()->fromSub($qdaful11lunas, 'subquery')->count();
+
             return [
                 'daftarr' => $daftarr,
                 'daftarrnow' => $daftarrnow,
